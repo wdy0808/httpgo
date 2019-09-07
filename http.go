@@ -2,7 +2,6 @@ package httpgo
 
 import (
 	"net/http"
-	"strconv"
 	"strings"
 	"time"
 )
@@ -74,9 +73,9 @@ func RunForver(config ServerConfig) {
 	}
 	server := &http.Server{
 		Handler:      World.router,
-		Addr:         "127.0.0.1" + strconv.FormatInt(World.serverConfig.Port, 10),
+		Addr:         "127.0.0.1:10486",
 		WriteTimeout: World.serverConfig.WriteTimeout,
 		ReadTimeout:  World.serverConfig.ReadTimeout,
 	}
-	go server.ListenAndServe()
+	server.ListenAndServe()
 }
