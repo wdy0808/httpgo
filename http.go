@@ -69,7 +69,7 @@ func RunForver(config ServerConfig) {
 	World.serverConfig = &config
 	server := &http.Server{
 		Handler:      World.router,
-		Addr:         "127.0.0.1" + strconv.FormatInt(World.serverConfig.Port, 10),
+		Addr:         "127.0.0.1:" + strconv.FormatInt(World.serverConfig.Port, 10),
 		WriteTimeout: World.serverConfig.WriteTimeout,
 		ReadTimeout:  World.serverConfig.ReadTimeout,
 	}
