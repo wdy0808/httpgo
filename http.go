@@ -66,7 +66,12 @@ func getAccessControlAllowHeader(requestHeaders string, allowedHeaders []string)
 }
 
 func RunForver(config ServerConfig) {
-	World.serverConfig = &config
+	World.serverConfig = &ServerConfig{
+		Port:          config.Port,
+		ReadTimeout:   config.ReadTimeout,
+		WriteTimeout:  config.WriteTimeout,
+		AllowedOrigin: config.AllowedOrigin,
+	}
 	server := &http.Server{
 		Handler:      World.router,
 		Addr:         "127.0.0.1" + strconv.FormatInt(World.serverConfig.Port, 10),
